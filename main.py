@@ -14,7 +14,7 @@ from pathlib import Path
 
 from uno.engine import UnoSimulation
 # Imports Bots
-from uno.bots import RandomBot, WildFirstBot, WildLastBot
+from uno.bots import RandomBot, WildFirstBot, WildLastBot, DemonHomeBot
 
 
 class UNOCLI:
@@ -58,8 +58,8 @@ Examples:
         sim_group.add_argument(
             "--bots", "-b",
             nargs="+",
-            choices=["RandomBot", "WildFirstBot", "WildLastBot"],
-            default=["RandomBot", "WildFirstBot"],
+            choices=["RandomBot", "WildFirstBot", "WildLastBot", "DemonHomeBot"],
+            default=["DemonHomeBot", "WildFirstBot"],
             help="Bot types to include in simulation"
         )
         sim_group.add_argument(
@@ -105,7 +105,8 @@ Examples:
         bot_classes = {
             "RandomBot": RandomBot,
             "WildFirstBot": WildFirstBot, 
-            "WildLastBot": WildLastBot
+            "WildLastBot": WildLastBot,
+            "DemonHomeBot": DemonHomeBot
         }
         
         bots = []
@@ -194,7 +195,7 @@ def run_default_simulation() -> Dict[str, Any]:
         Dictionary containing simulation statistics
     """
     bots = [
-        RandomBot("Random1", 1),
+        DemonHomeBot("DemonHomeBot", 1),
         WildFirstBot("WildFirst", 2),
     ]
     
